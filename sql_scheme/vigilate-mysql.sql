@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `user_monitored_program` (
 
 CREATE TABLE IF NOT EXISTS `user_preference` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
   `id_program` int(11) NOT NULL,
   `score` int(11) NOT NULL,
   `alert_mean` int(11) NOT NULL,
