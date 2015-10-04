@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE TABLE IF NOT EXISTS `user_monitored_program` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `program_name` varchar(20) NOT NULL,
-  `program_version` int(11) NOT NULL,
+  `program_version` varchar(20) NOT NULL,
   `minimum_score` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
