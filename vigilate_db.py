@@ -6,7 +6,7 @@ class vigilate_db:
     def __init__(self):
         self.connected = False
 
-        self.connect("mysql", "root", "toor")
+        self.connect("mysql+pymysql", "root", "toor")
         if not self.connected:
             self.connect("postgres", "root", "toor")
 
@@ -19,3 +19,4 @@ class vigilate_db:
         else:
             print ("Successfully connected to the %s database." % dbtype)
             self.connected = True
+
