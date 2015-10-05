@@ -1,4 +1,6 @@
 from sqlalchemy import engine, exc
+from sqlalchemy.orm import sessionmaker 
+from table_declaration.py import Dealer, Users, User_monitored_program, User_preference, Vulns
 
 class vigilate_db:
     """VIGILATE's dabatase communication module"""
@@ -8,7 +10,7 @@ class vigilate_db:
 
         self.connect("mysql+pymysql", "root", "toor")
         if not self.connected:
-            self.connect("postgres", "root", "toor")
+            self.connect("postgresql", "root", "toor")
 
     def connect(self, dbtype, user, password, dbname="vigilate", host="localhost"):
         try:
@@ -19,4 +21,3 @@ class vigilate_db:
         else:
             print ("Successfully connected to the %s database." % dbtype)
             self.connected = True
-
