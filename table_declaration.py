@@ -58,6 +58,13 @@ class Vulns(Base):
     simplified_detail = Column(Text, nullable=False)
     score = Column(Integer, nullable=False)
 
+class Alertes(Base):
+    __tablename__ = 'alertes'
+
+    id = Column(Integer, primary_key=True)
+    id_user = Column(Integer, nullable=False)
+    id_cve = Column(Integer, nullable=False)
+    alert_mean = Column(Integer, nullable=False)
 
 print("Setup the data base")
 if database_exists('mysql+pymysql://root:toor@localhost/vigilate') or database_exists('postgresql://vigilate@localhost/vigilate'):
