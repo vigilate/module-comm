@@ -1,6 +1,6 @@
 from sqlalchemy import engine, exc
 from sqlalchemy.orm import sessionmaker 
-from table_declaration.py import Dealer, Users, User_monitored_program, User_preference, Vulns
+from table_declaration import Dealer, Users, User_monitored_program, User_preference, Vulns
 
 class vigilate_db:
     """VIGILATE's dabatase communication module"""
