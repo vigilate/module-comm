@@ -21,8 +21,7 @@ class Users(Base):
     username = Column(String(20), nullable=False, unique=True)
     email = Column(String(100), nullable=False, unique=True)
     password = Column(String(60), nullable=False)
-    id_list_programs_monitored = Column(Integer, nullable=False)
-    list_programs_monitored = Column(Integer, nullable=False)
+    id_preference = Column(Integer, nullable=False)
     type = Column(Integer, nullable=False)
     contrat = Column(Integer, nullable=False)
 
@@ -34,6 +33,7 @@ class User_monitored_program(Base):
     program_name = Column(String(20), nullable=False)
     program_version = Column(String(20), nullable=False)
     minimum_score = Column(Integer, nullable=False)
+    id_user = Column(Integer, nullable=False)
 
     
 class User_preference(Base):
@@ -43,11 +43,11 @@ class User_preference(Base):
     id_user = Column(Integer, nullable=False)
     id_prgram = Column(Integer, nullable=False)
     score = Column(Integer, nullable=False)
-    aler_mean = Column(Integer, nullable=False)
+    alert_mean = Column(Integer, nullable=False)
 
 
 class Vulns(Base):
-    __tablename__ = "vulns"
+    __tablename__ = 'vulns'
 
     id = Column(Integer, primary_key=True)
     cveid = Column(String(20), nullable=False)
