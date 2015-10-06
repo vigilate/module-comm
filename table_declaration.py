@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, Integer, String, Date, Text
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy_utils.functions import database_exists, create_database
 from sqlalchemy import create_engine, exc
 
@@ -73,4 +73,7 @@ else:
             exit("Can't create database : mysql, postgres %s" % err2)
             
     Base.metadata.create_all(engine)
+    s = sessionmaker(bind=engine)()
+    s.add(Users(username="NULL", email="NULL", password="NULL", type=0, contrat=0, id_dealer=1))
+    s.commit()
     print("Setup finish")

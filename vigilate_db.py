@@ -23,7 +23,6 @@ def connect_to_database():
         session = sessionmaker(bind=e)
         return session()
 
-def add_user(session, username, email, password, id_preference, user_type, contrat):
-    new_user = Users(username=username, email=email, password=password, type=user_type, contrat=contrat)
-    session.add(new_user)
+def add_user(session, username, email, password, user_type, contrat, id_dealer):
+    session.add(Users(username=username, email=email, password=password, type=user_type, contrat=contrat, id_dealer=id_dealer))
     session.commit()
