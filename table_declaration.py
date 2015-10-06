@@ -78,8 +78,7 @@ else:
             create_database('postgresql://vigilate@localhost/vigilate')
             engine = create_engine('postgresql://vigilate@localhost/vigilate')
         except exc.OperationalError as err2:
-            print("Can't create database : mysql, postgres %s" % err2)
-            exit(0)
+            exit("Can't create database : mysql, postgres %s" % err2)
             
     Base.metadata.create_all(engine)
     print("Setup finish")
