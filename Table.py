@@ -10,7 +10,7 @@ class Users(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(20), nullable=False, unique=True)
     email = Column(String(100), nullable=False, unique=True)
-    password = Column(String(60), nullable=False)
+    password = Column(String(150), nullable=False)
     type = Column(Integer, nullable=False)
     contrat = Column(Integer, nullable=False)
     id_dealer = Column(Integer, ForeignKey('users.id'))
