@@ -1,4 +1,4 @@
-PYTHON = python3
+PYTHON ?= python3
 
 PYARGON_DIR = PyArgon2
 LIB_ARGON2 = libargon2.so
