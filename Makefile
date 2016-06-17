@@ -2,7 +2,7 @@ PYTHON ?= python3
 
 PYARGON_DIR = PyArgon2
 LIB_ARGON2 = libargon2.so
-INSTALL_DIR = /usr/lib
+INSTALL_DIR ?= /usr/lib
 
 ARGON_DIR = Argon2/Source/C99/
 ARGON_BUILD_DIR = Argon2/Build
