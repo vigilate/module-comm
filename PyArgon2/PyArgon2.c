@@ -33,7 +33,7 @@ static PyObject *Hash_pwd(PyObject *self, PyObject *args)
   else
     ret = hash;
 
-  return Py_BuildValue("y", ret);
+  return Py_BuildValue("y#", ret, 64);
 }
 
 
@@ -45,11 +45,18 @@ static PyObject *Check_pwd(PyObject *self, PyObject *args)
   PyObject *py_hash_check = PyTuple_GetItem(args, 2);
   ssize_t size_pwd = PyBytes_Size(py_pwd);
   ssize_t size_salt = PyBytes_Size(py_salt);
+  ssize_t size_hash_check = PyBytes_Size(py_hash_check);
   char	*pwd = PyBytes_AsString(py_pwd);
   char	*salt = PyBytes_AsString(py_salt);
-  char	*hash_check = PyBytes_AsString(py_hash_check);
+  char	*hash_check = NULL;
   PyObject *ret;
-  
+
+  if (PyBytes_AsStringAndSize(py_hash_check, (char **) &hash_check, &size_hash_check) == -1)
+    {
+      PyErr_BadArgument();
+      return Py_False;
+    }
+
   Argon2_Context arg_ctx = {(uint8_t*)hash, 64, (uint8_t*)pwd, size_pwd, (uint8_t*)salt, size_salt, NULL, 0, NULL, 0, 5, 2 << 9, 4, 1, NULL, NULL, false, false, false};
 
   if (VerifyD(&arg_ctx, (char *)hash_check))
