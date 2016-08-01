@@ -49,22 +49,19 @@ static PyObject *Check_pwd(PyObject *self, PyObject *args)
   char	*pwd = PyBytes_AsString(py_pwd);
   char	*salt = PyBytes_AsString(py_salt);
   char	*hash_check = NULL;
-  PyObject *ret;
 
   if (PyBytes_AsStringAndSize(py_hash_check, (char **) &hash_check, &size_hash_check) == -1)
     {
       PyErr_BadArgument();
-      return Py_False;
+      Py_RETURN_FALSE;
     }
 
   Argon2_Context arg_ctx = {(uint8_t*)hash, 64, (uint8_t*)pwd, size_pwd, (uint8_t*)salt, size_salt, NULL, 0, NULL, 0, 5, 2 << 9, 4, 1, NULL, NULL, false, false, false};
 
   if (VerifyD(&arg_ctx, (char *)hash_check))
-    ret = Py_True;
+    Py_RETURN_TRUE;
   else
-    ret = Py_False;
-
-  return ret;
+    Py_RETURN_FALSE;
 }
 
 static PyMethodDef PyArgon2_methods[] = {
