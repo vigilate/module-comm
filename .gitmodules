@@ -1,3 +1,4 @@
 [submodule "Argon2"]
 	path = Argon2
 	url = https://github.com/khovratovich/Argon2.git
+	depth = 1
